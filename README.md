@@ -1,2 +1,5 @@
 # TempratureController
-App to control Temperature using a Slider.
+app gets you updated temperature degrees
+also provided by a side bar to control room temperature degree
+
+
