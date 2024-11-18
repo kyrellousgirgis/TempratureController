@@ -14,7 +14,7 @@ export default StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#57b0e3",
     padding: 16,
-    height: 300,
+    height: "auto",
     elevation: 15,
     borderRadius: 30,
     marginHorizontal: 15,
@@ -29,6 +29,5 @@ export default StyleSheet.create({
     fontSize: 32,
     fontWeight: "600",
     color: "#fff",
-    marginBottom: 24,
   },
 });

@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import styles from './styles';
+import { getSliderColor } from './utils';
 
 const TemperatureControl = ({onTempratureChange, temperature}) => {
   
@@ -17,9 +18,9 @@ const TemperatureControl = ({onTempratureChange, temperature}) => {
           step={1}
           value={temperature}
           onValueChange={onTempratureChange}
-          minimumTrackTintColor={getSliderColor()}
+          minimumTrackTintColor={getSliderColor(temperature)}
           maximumTrackTintColor="#D3D3D3"
-          thumbTintColor={getSliderColor()}
+          thumbTintColor={getSliderColor(temperature)}
           />
           <FontAwesome6 name="temperature-full" size={24} color="red" />
       </View>
