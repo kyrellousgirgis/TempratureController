@@ -5,7 +5,6 @@ import styles from './styles';
 import useFetch from '../../Hooks/UseFetch';
 import { fetchDegrees } from '../../Services';
 import { generateRandomNumber } from '../../Utils/utils';
-import axios from 'axios';
 
 
 const TemperatureScreen = () => {
@@ -13,25 +12,34 @@ const TemperatureScreen = () => {
   const cachedFn = useCallback((async ()=>{ return fetchDegrees(randomId)}), [randomId])
   const [temperature, setTemperature] = useState(20);
   const [temperatureMeasure,setTemperatureMeasure] = useState(20)
-  const {data,loading,error} = useFetch(randomId && cachedFn)
+  
+  const onSuccess = (data)=>{
+    setTemperatureMeasure(data?.degree)
+  }
+  const {data,loading,error} = useFetch(randomId && cachedFn, onSuccess)
   
   useEffect(()=>{
-    data?.degree && setTemperatureMeasure(data.degree)
-    setTimeout(()=>{
+   const intervalID = setInterval(()=>{
       setRandomId(generateRandomNumber(1,21))
     },5000)
-  },[randomId])
+    return ()=>{
+       clearInterval(intervalID)
+    }
+  },[])
 
 
 
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
+       {/*section of getting visual updates from the Mock API*/}
 
         <Text style={styles.title}>Temperature Updates</Text>
         <Text style={styles.temperatureDisplay}>{temperatureMeasure}°C</Text>
        
         <TemperatureControl temperature={temperatureMeasure} onTempratureChange={setTemperature} />
+       
+       {/*section of setting temperature of the room*/}
         <Text style={styles.title}>Set Temperature</Text>
 
         <Text style={styles.temperatureDisplay}>{temperature}°C</Text>

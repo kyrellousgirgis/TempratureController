@@ -5,11 +5,11 @@ import axios from "axios";
 //that's why we mostly use axios cache interceptors in real life apps
 const degrees = {};
 
-// try to invavlidate every 10 secondss
+//invavlidate every 3 minutes
 setInterval(() => {
   console.log("clear");
   for (const degree in degrees) delete degrees[degree];
-}, 15000);
+}, 180000);
 
 const fetchDegrees = async (id) => {
   console.log("id:", id);
