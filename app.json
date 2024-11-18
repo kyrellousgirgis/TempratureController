@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Thermo",
+    "slug": "Thermo",
+    "version": "1.0.0",
+    "icon": "./Assets/ic_launcher_monochrome.png",
+    "platforms": ["ios", "android"],
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#232323",
+          "image": "./Assets/ic_launcher_foreground.png",
+          "dark": {
+            "image": "./assets/splash-icon-dark.png",
+            "backgroundColor": "#000000"
+          },
+          "imageWidth": 200
+        }
+      ]
+    ]
+  }
+}
